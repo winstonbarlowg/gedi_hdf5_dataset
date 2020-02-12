@@ -42,16 +42,8 @@ def get_arrays(group):
                 all_arrays.append(np.array(group.get(key)))
     return all_arrays
 
-# get only arrays of specified length 
-def get_arrays_equal_len(group):
-    equal_len_arrays = []
-    for array in get_arrays(group): 
-        if len(array) == 249810:
-            equal_len_arrays.append(array)
-    return equal_len_arrays
-
 # create dictionary combining list with name of datasets and respective arrays
-data = dict(zip(get_dataset_list(group1), get_arrays_equal_len(group1)))
+data = dict(zip(get_dataset_list(group1), get_arrays(group1)))
 
 # pandas fataframe from dictionary
 df = pd.DataFrame.from_dict(data)
