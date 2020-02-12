@@ -26,14 +26,14 @@ def get_dataset_list(group):
         if type(group.get(key)) == h5py._hl.dataset.Dataset:
             just_datasets.append(key)
             
-    for dataset in just_datasets: # from previous list, get only the datasets of a specific array length
+    for dataset in just_datasets: # from previous list, store datasets of a specific array length in a list
         if len(np.array(group.get(dataset))) == 249810:
             datasets_len.append(dataset)
 
     #     return just_datasets
     return  datasets_len
 
-# using the previous list get a numpy array for each dataset
+# using the list from get_datasets_list(), get a numpy array for each dataset and store in list
 def get_arrays(group):
     all_arrays = []
     for key in group:
